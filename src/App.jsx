@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from 'react';
+import "./App.css"
 
 import Header from "./components/header"
 import Body from "./components/body"
+
 
 
 // async functions returns promises

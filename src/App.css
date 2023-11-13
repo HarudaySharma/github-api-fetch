@@ -1,0 +1,137 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.parent-container {
+    width: fit-content;
+    margin: 0 auto;
+    display: grid;
+    grid-template-rows: 1fr 3fr;
+    grid-template-columns: 1fr;
+    grid-template-areas: "head"
+        "body";
+    row-gap: 1em;
+
+}
+.container-styling {
+    border: 2px solid black;
+    border-radius: 1em;
+    padding: 1em;
+}
+
+.container-one {
+    grid-area: head;
+    display: flex;
+    flex-flow: column wrap;
+    gap: 1em;
+}
+
+.container-one h1 {
+    margin-bottom: 0.4em;
+    padding-bottom: 0.2em;
+    border-bottom: 2px solid black;
+    font-style: italic;
+    letter-spacing: 0.1em;
+}
+
+.container-one input[type="text"] {
+    width: 18em;
+    height: 2em;
+    font-size: 1em;
+    padding: 0.2em;
+}
+
+.container-one input[type="text"]:focus {
+    border:none;
+    outline: 2px solid darkturquoise;
+}
+
+.container-one button {
+    height: 2.3em;
+    width: 12em;
+    padding: 0.2em;
+    background-color: rgb(47, 127, 129);
+    color: white;
+    border:none;
+    border-radius: 0.5em;
+    cursor: pointer;
+}
+
+.container-one button:hover {
+    border: 2px solid black;
+    background-color: rgb(79, 148, 151);
+}
+.container-two {
+    grid-area: body;
+    font-size: 1.5em;
+    font-style: italic;
+    letter-spacing: 0.1em;
+    height: fit-content;
+}
+.container-two h2 {
+    margin-bottom: 0.4em;
+    padding-bottom: 0.2em;
+    border-bottom: 2px solid black;
+    width: fit-content;
+}
+
+.container-two .user-info {
+    display: flex;
+    flex-flow: row wrap;
+    align-items: center;
+    gap: 1em;
+    padding-bottom: 1em;
+    border-bottom: 2px solid black;
+}
+.user-info .avatar {
+    width: 10em;
+    height: 10em;
+    font-size: 0.8em;
+    border: 2px solid black;
+    outline: 6px solid lightcyan;
+    border-radius: 1em;
+}
+
+.u_meta .followers, .u_meta .following {
+    display: inline-block;
+    margin: 0 1em 0.4em 0;
+}
+
+.u_meta .meta-styling {
+    border-bottom: 4px solid darkturquoise;
+    border-left: 4px solid darkturquoise;
+    border-radius: 0.4em;
+    padding: 0 0 4px 4px;
+}
+
+.repos .repo-list {
+    display: flex;
+    flex-flow: row wrap;
+    gap: 1em;
+    margin: 0.4em;
+}
+
+.repos h3 {
+    width: fit-content;
+    padding: 0.2em;
+    border-bottom: 2px solid black;
+}
+
+.repo-list a {
+    text-decoration: none;
+    color: black;
+    font-size: 0.8em;
+}
+
+.repo-list a:hover {
+    text-decoration: underline darkturquoise wavy 2px;
+    color:rgb(86, 84, 84);
+}
+
+
+
+
+
+
+

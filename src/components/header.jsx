@@ -9,12 +9,12 @@ function Header({ handleUsernameChange }) {
 
     function handleButtonClick() {
         console.log(username);
-        
         handleUsernameChange(username);
+        setUsername('');
     }
 
     return (
-        <div className="container-one">
+        <div className="container-one container-styling">
             <h1>Github API</h1>
             <input type="text" name="github_username" value={username} onChange={(e) => handleUsernameInput(e.target.value)} />
             <button type="button" onClick={handleButtonClick}>Pull User Data</button>
