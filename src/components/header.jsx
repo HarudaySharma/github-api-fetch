@@ -17,7 +17,7 @@ function Header({ handleUsernameChange }) {
     return (
         <div className="container-one container-styling">
             <h1>Github API</h1>
-            <input onKeyDown={handleButtonClick} type="text" name="github_username" value={username} onChange={(e) => handleUsernameInput(e.target.value)} />
+            <input onKeyDown={handleButtonClick} placeholder="Username.." type="text" name="github_username" value={username} onChange={(e) => handleUsernameInput(e.target.value)} />
             <button type="button" onClick={handleButtonClick}>Pull User Data</button>
         </div>
     )
