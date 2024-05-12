@@ -7,16 +7,17 @@ function Header({ handleUsernameChange }) {
         setUsername(uname);
     }
 
-    function handleButtonClick() {
-        console.log(username);
-        handleUsernameChange(username);
-        setUsername('');
+    function handleButtonClick(e) {
+        if (e.key === undefined || e.key === 'Enter') {
+            handleUsernameChange(username);
+            setUsername('');
+        }
     }
 
     return (
         <div className="container-one container-styling">
             <h1>Github API</h1>
-            <input type="text" name="github_username" value={username} onChange={(e) => handleUsernameInput(e.target.value)} />
+            <input onKeyDown={handleButtonClick} type="text" name="github_username" value={username} onChange={(e) => handleUsernameInput(e.target.value)} />
             <button type="button" onClick={handleButtonClick}>Pull User Data</button>
         </div>
     )

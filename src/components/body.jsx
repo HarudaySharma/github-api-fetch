@@ -1,17 +1,38 @@
-import React, { useState } from "react";
-
-async function fetchUserRepos(username) {
-    let res = await fetch(`https://api.github.com/users/${username}/repos`);
-    return await res.json();
-}
+import React, { useEffect, useState } from "react";
 
 function Body({ userData }) {
+    const [reposArray, setReposArray] = useState([]);
 
-    function DisplayReposList({ login }) {
-        const [reposArray, setReposArray] = useState([]);
+    useEffect(() => {
 
-        fetchUserRepos(login)
-            .then((repos) => setReposArray(repos));
+        async function fetchUserRepos(username) {
+            try {
+                console.log(username);
+                let res = await fetch(`https://api.github.com/users/${username}/repos`);
+                if (!res.ok) {
+                    console.log(res);
+                    return;
+                }
+                const data = await res.json()
+                if (Array.isArray(data)) {
+                    setReposArray(data);
+                    return;
+                }
+            }
+            catch (err) {
+                console.log(err);
+            }
+        }
+
+        fetchUserRepos(userData.login)
+
+        return () => {
+            setReposArray([]);
+        }
+
+    }, [userData]);
+
+    function DisplayReposList() {
 
         function Repo({ url, name }) {
             return (
@@ -22,16 +43,18 @@ function Body({ userData }) {
         return (
             <div className="repo-list">
                 {reposArray.length == 0 && <p>no public repos</p>}
-                {reposArray && reposArray.map((repo) => <Repo url={repo.html_url} name={repo.name} />)}
+                {Array.isArray(reposArray) && reposArray.map((repo) => <Repo key={repo.html_url} url={repo.html_url} name={repo.name} />)}
             </div>
         )
 
     }
+
     function UserImg({ url }) {
         return (
             <img className="avatar" src={url} alt="userImg" />
         )
     }
+
     function UserMetaData({ followers, following, public_repos }) {
         return (
             <div className="u_meta">
@@ -52,7 +75,7 @@ function Body({ userData }) {
             </div>
             <div className="repos">
                 <h3>Repo list</h3>
-                <DisplayReposList login={userData.login} />
+                <DisplayReposList />
             </div>
         </div >
     )
